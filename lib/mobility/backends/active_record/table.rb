@@ -269,7 +269,7 @@ columns to that table.
           inverse_of:  association_name,
           touch: true
 
-        before_save do
+        after_save do
           required_attributes = translation_class.attribute_names.select { |name| self.class.mobility_attribute?(name) }
           send(association_name).destroy_empty_translations(required_attributes)
         end
